@@ -322,8 +322,8 @@
         "affectsGlobalScope": false
       },
       "./src/Table.ts": {
-        "version": "34dc7cf8836bdb7ce5e5421c4d72d9952bc3d92162f5a751f27c37ddb6870308",
-        "signature": "a229b6486490d865f29f37c45111dab3d9841c447de5c39d2ccb416da1ec7fae",
+        "version": "6e5aad2e3cd276849b6b60458e0c43465db59402d2675b44c7009113dd9166f7",
+        "signature": "ecd34750c9fcd24359b95ba954a5162d1a2fb7ad82fb8f053559c4796777cb21",
         "affectsGlobalScope": false
       },
       "./src/Database.ts": {
@@ -337,8 +337,8 @@
         "affectsGlobalScope": false
       },
       "./tests/data/playlist.ts": {
-        "version": "79592cb18d109ac5ed0cc811f89101e53e776bb94142fe540eace227ee7ec932",
-        "signature": "61eb5c8e80c69dec51270b7fa0d4714652296ce9a817fb630dcea6d3c00494ac",
+        "version": "ad8beb95e3c92d372f0d47931e396883997d9fac33da5d86781761ba11fc9e80",
+        "signature": "c7be4e02c98a3f1f70cfc80da32928074c8603b9a1f928dc53e78c6809a9cd00",
         "affectsGlobalScope": false
       },
       "./tests/data/song.ts": {
@@ -352,7 +352,7 @@
         "affectsGlobalScope": false
       },
       "./tests/Database-spec.ts": {
-        "version": "ffac9ac71862acef706a81f167e8fb237b297d8b1f684b37fe10d681dbd4ba9d",
+        "version": "51c0493f4f6c4a66ebc7cb4fceed7b51df926ad5b482e0dff1dfdfe35b3bcfd0",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -696,6 +696,11 @@
         "signature": "c6c4fea9acc55d5e38ff2b70d57ab0b5cdbd08f8bc5d7a226e322cea128c5b57",
         "affectsGlobalScope": false
       },
+      "./node_modules/@types/websocket/index.d.ts": {
+        "version": "c7e7cda216cdbb2fd27fe47a7ae0a4e0f5b0b5ebc44d51e4a2a3eca8ba68e53d",
+        "signature": "c7e7cda216cdbb2fd27fe47a7ae0a4e0f5b0b5ebc44d51e4a2a3eca8ba68e53d",
+        "affectsGlobalScope": false
+      },
       "./node_modules/@types/yargs-parser/index.d.ts": {
         "version": "3bdd93ec24853e61bfa4c63ebaa425ff3e474156e87a47d90122e1d8cc717c1f",
         "signature": "3bdd93ec24853e61bfa4c63ebaa425ff3e474156e87a47d90122e1d8cc717c1f",
@@ -725,7 +730,7 @@
           "src/*"
         ]
       },
-      "pathsBasePath": "/workspace/type-strong-reducer",
+      "pathsBasePath": "/Volumes/Coding/trouble-tickets/type-strong-reducer",
       "noEmit": true,
       "configFilePath": "./tsconfig.json"
     },
@@ -933,6 +938,14 @@
       ],
       "./node_modules/@types/node/zlib.d.ts": [
         "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/websocket/index.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/https.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/url.d.ts"
       ],
       "./node_modules/@types/yargs/index.d.ts": [
         "./node_modules/@types/yargs-parser/index.d.ts"
@@ -1190,7 +1203,6 @@
         "./node_modules/io-ts/lib/index.d.ts"
       ],
       "./tests/Database-spec.ts": [
-        "./src/Database.ts",
         "./src/Table.ts",
         "./src/arrayToObject.ts",
         "./tests/data/index.ts"
@@ -1410,6 +1422,14 @@
       ],
       "./node_modules/@types/node/zlib.d.ts": [
         "./node_modules/@types/node/stream.d.ts"
+      ],
+      "./node_modules/@types/websocket/index.d.ts": [
+        "./node_modules/@types/node/events.d.ts",
+        "./node_modules/@types/node/http.d.ts",
+        "./node_modules/@types/node/https.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/@types/node/net.d.ts",
+        "./node_modules/@types/node/url.d.ts"
       ],
       "./node_modules/@types/yargs/index.d.ts": [
         "./node_modules/@types/yargs-parser/index.d.ts"
@@ -1739,6 +1759,7 @@
       "./node_modules/@types/normalize-package-data/index.d.ts",
       "./node_modules/@types/prettier/index.d.ts",
       "./node_modules/@types/stack-utils/index.d.ts",
+      "./node_modules/@types/websocket/index.d.ts",
       "./node_modules/@types/yargs-parser/index.d.ts",
       "./node_modules/@types/yargs/index.d.ts",
       "./node_modules/fp-ts/HKT.d.ts",
@@ -1815,81 +1836,7 @@
       "./src/Database.ts",
       "./src/Table.ts",
       "./src/arrayToObject.ts",
-      [
-        "./tests/Database-spec.ts",
-        [
-          {
-            "file": "./tests/Database-spec.ts",
-            "start": 689,
-            "length": 4,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'Song' does not exist on type 'ITableDefinition<any>'."
-          },
-          {
-            "file": "./tests/Database-spec.ts",
-            "start": 729,
-            "length": 4,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'Song' does not exist on type 'ITableDefinition<any>'."
-          },
-          {
-            "file": "./tests/Database-spec.ts",
-            "start": 776,
-            "length": 8,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'Playlist' does not exist on type 'ITableDefinition<any>'."
-          },
-          {
-            "file": "./tests/Database-spec.ts",
-            "start": 2779,
-            "length": 7,
-            "code": 2339,
-            "category": 1,
-            "messageText": {
-              "messageText": "Property 'toFixed' does not exist on type 'string | number | Date'.",
-              "category": 1,
-              "code": 2339,
-              "next": [
-                {
-                  "messageText": "Property 'toFixed' does not exist on type 'string'.",
-                  "category": 1,
-                  "code": 2339
-                }
-              ]
-            }
-          },
-          {
-            "file": "./tests/Database-spec.ts",
-            "start": 2987,
-            "length": 11,
-            "code": 2339,
-            "category": 1,
-            "messageText": {
-              "messageText": "Property 'toUpperCase' does not exist on type 'string | number | Date'.",
-              "category": 1,
-              "code": 2339,
-              "next": [
-                {
-                  "messageText": "Property 'toUpperCase' does not exist on type 'number'.",
-                  "category": 1,
-                  "code": 2339
-                }
-              ]
-            }
-          },
-          {
-            "file": "./tests/Database-spec.ts",
-            "start": 3693,
-            "length": 8,
-            "code": 2345,
-            "category": 1,
-            "messageText": "Argument of type 'string' is not assignable to parameter of type 'never'."
-          }
-        ]
-      ],
+      "./tests/Database-spec.ts",
       "./tests/data/index.ts",
       "./tests/data/playlist.ts",
       "./tests/data/song.ts"
@@ -2137,6 +2084,10 @@
       ],
       [
         "./node_modules/@types/stack-utils/index.d.ts",
+        1
+      ],
+      [
+        "./node_modules/@types/websocket/index.d.ts",
         1
       ],
       [

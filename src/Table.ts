@@ -11,7 +11,9 @@ export interface ITableDefinition<T extends object> {
   update: (record: Partial<T>) => string;
 }
 
-export const Table = <T extends object>(model: t.Type<T>): ITableDefinition<T> => {
+export const Table = <T extends object>(
+  model: t.Type<T>
+): Readonly<ITableDefinition<T>> => {
   const name: Readonly<string> = model.name;
   // const name: Readonly<string> = model.name as const;
 
