@@ -1,7 +1,7 @@
 import { arrayToObject } from "~/arrayToObject";
 import { Database } from "~/Database";
 import { Table } from "~/Table";
-import { mySong, Playlist, Song } from "./data";
+import { ISong, mySong, Playlist, Song } from "./data";
 
 describe("Trouble with iterables => ", () => {
   // response structure is as expected
@@ -59,9 +59,9 @@ describe("Trouble with iterables => ", () => {
 
 describe("arrayToObject => ", () => {
   it("array of relatively simple name/value objects with different types for 'value'", () => {
-    const foo = { name: "foo", value: 123 };
-    const bar = { name: "bar", value: "bar" };
-    const baz = { name: "baz", value: new Date() };
+    const foo = { name: "foo", value: 123 } as const;
+    const bar = { name: "bar", value: "bar" } as const;
+    const baz = { name: "baz", value: new Date() } as const;
 
     const arr = [foo, bar, baz];
     const result = arrayToObject(arr);
@@ -78,7 +78,21 @@ describe("arrayToObject => ", () => {
     expect(result.bar.value.toUpperCase()).toBe(bar.value.toUpperCase());
   });
 
-  it("array of objects which carry type info in generics", () => {
+  it("differently named objects with conflicting type definition ", () => {
+    const foo = { name: "foo", select: "select" } as const;
+
+    const arr = [foo, Table(Song), Table(Playlist)];
+    const result = arrayToObject(arr);
+
+    expect(result.foo.name).toBe("foo");
+    expect(result.Song.name).toBe("Song");
+    expect(result.Playlist.name).toBe("Playlist");
+
+    expect(typeof result.foo.select).toBe("string");
+    expect(typeof result.Song.select).toBe("function");
+  });
+
+  it("type info in generics", () => {
     const song = Table(Song);
     const playlist = Table(Playlist);
 
