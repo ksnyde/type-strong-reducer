@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "lint": "tsc --noEmit",
+    "test": "jest && yarn lint"
   },
   "dependencies": {
     "fp-ts": "^2.9.3",
