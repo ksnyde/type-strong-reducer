@@ -48,6 +48,17 @@ describe("arrayToObject => ", () => {
     expect(result.Nonsense).toBe(undefined); // result is not strongly typed, allows any string
   });
 
+  it("io-ts type guards retain full type fidelity", () => {
+    const song = Table(Song);
+    const playlist = Table(Playlist);
+
+    const arr = [song, playlist];
+    const result = arrayToObject(arr);
+
+    expect(result.Song.is(mySong)).toBe(true);
+    expect(result.Song.is({ id: "not-a-song" })).toBe(false);
+  });
+
   it("type info in generics", () => {
     const song = Table(Song);
     const playlist = Table(Playlist);
@@ -59,12 +70,10 @@ describe("arrayToObject => ", () => {
     const result = arrayToObject(arr);
 
     expect(result.Song.name).toBe("Song");
-    // type guards of the given type are preserved
-    // due to `io-ts` run-time def
-    expect(result.Song.is(mySong)).toBe(true);
-    expect(result.Song.is({ id: "not-a-song" })).toBe(false);
 
     // type inference fails to provide non-io-ts properties
+    // though hovering over result suggests that this is because
+    // result has becoming a Union instead of a discriminated union
     expect(result.Song.select("artist")).toBe("this is just a test");
   });
 });
