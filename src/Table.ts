@@ -12,9 +12,12 @@ export interface ITableDefinition<T extends object> {
 }
 
 export const Table = <T extends object>(model: t.Type<T>): ITableDefinition<T> => {
+  const name: Readonly<string> = model.name;
+  // const name: Readonly<string> = model.name as const;
+
   return {
     // basics
-    name: model.name,
+    name,
     // io-ts
     is: model.is,
     encode: model.encode,
