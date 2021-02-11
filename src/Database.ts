@@ -1,42 +1,16 @@
+import { arrayToObject } from "./arrayToObject";
 import { ITableDefinition } from "./Table";
 
-type IDatabase<T extends { [P in keyof T]: T[P] } = any> = {
-  [P in keyof T]: T[P];
+export type IDatabase<T extends object> = {
+  tableNames: string[];
+  tables: T;
 };
 
-export function Database(...tables: ITableDefinition<any>[]) {
-  const tableNames = tables.map((table) => table.name);
-
+export function Database<T extends ITableDefinition<any, S>, S extends PropertyKey>(
+  tbls: readonly T[]
+) {
   return {
-    tables: tables.reduce((acc, table) => ({ ...acc, [table.name]: table })),
-    tables2: tables.reduce(
-      (acc, table) => ({
-        ...(acc ? acc : {}),
-        [table.name]: table,
-      }),
-      {} as Record<string, ITableDefinition<any>>
-    ),
-    tables3: tables.reduce(
-      (acc, table) => ({
-        ...(acc ? acc : {}),
-        [table.name]: table,
-      }),
-      {} as { [key: string]: ITableDefinition<any> }
-    ),
-    tables4: tables.reduce<{ [key: string]: ITableDefinition<any> }>(
-      (acc, table) => ({
-        ...acc,
-        [table.name]: table,
-      }),
-      {}
-    ),
-    tables5: tables.reduce<IDatabase>(
-      (acc, table) => ({
-        ...acc,
-        [table.name]: table,
-      }),
-      {}
-    ),
-    tableNames,
+    tables: arrayToObject(tbls),
+    tableNames: tbls.map((table) => table.name),
   };
 }

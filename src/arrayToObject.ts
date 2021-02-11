@@ -1,6 +1,6 @@
 /**
  * Takes a strongly typed array of objects and converts it into a dictionary
- * of objects while _preserving_ the strong typing in the original array.
+ * of objects while preserving the strong typing in the original objects.
  */
 export function arrayToObject<T extends { name: S }, S extends PropertyKey>(
   /** an array of objects */

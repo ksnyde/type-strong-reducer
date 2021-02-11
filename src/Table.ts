@@ -1,7 +1,7 @@
 import * as t from "io-ts";
 
-export interface ITableDefinition<T extends object> {
-  name: Readonly<string>;
+export interface ITableDefinition<T extends object, S> {
+  name: S;
 
   is: t.Mixed["is"];
   encode: t.Mixed["encode"];
@@ -11,15 +11,15 @@ export interface ITableDefinition<T extends object> {
   update: (record: Partial<T>) => string;
 }
 
-export const Table = <T extends object>(
+export const Table = <
+  T extends { name: Readonly<string> },
+  S extends T["name"] = T["name"]
+>(
   model: t.Type<T>
-): Readonly<ITableDefinition<T>> => {
-  const name: Readonly<string> = model.name;
-  // const name: Readonly<string> = model.name as const;
-
+): ITableDefinition<T, S> => {
   return {
     // basics
-    name,
+    name: model.name as S,
     // io-ts
     is: model.is,
     encode: model.encode,
